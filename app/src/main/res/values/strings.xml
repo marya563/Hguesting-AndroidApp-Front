@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">newapp</string>
+    <string name="fullname_label">Fullname</string>
+    <string name="password_label">Password</string>
+    <string name="fullname">enter fullname</string>
+    <string name="password">enter password</string>
+    <string name="app_signin">Login succeded!</string>
+    <string name="check_remember">Remember me</string>
+    <string name="emptyField">Must not be empty</string>
+    <string name="emailError">Check your email !</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
