@@ -7,9 +7,10 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".ui.MainActivity">
 
-    <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
+   <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
         android:id="@+id/imageView"
         android:layout_width="508dp"
         android:layout_height="480dp"
@@ -21,8 +22,8 @@
         android:id="@+id/textView15"
         android:layout_width="158dp"
         android:layout_height="321dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="272dp"
         android:fontFamily="@font/urbanist_bold"
         android:gravity="center"
         android:text="Let's discover the world  with us"

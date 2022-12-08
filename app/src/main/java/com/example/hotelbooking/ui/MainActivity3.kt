@@ -20,7 +20,7 @@ class MainActivity3 : AppCompatActivity() {
 
         btn.setOnClickListener{
             startActivity(
-                Intent(this, HotelManagementActivity::class.java)
+                Intent(this, HomeActivity::class.java)
             )
 
         }

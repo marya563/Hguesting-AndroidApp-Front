@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">hotelbooking</string>
+    <string name="app_name">hotel booking</string>
     <string name="hotelname">HotelName</string>
     <string name="country">Country</string>
     <string name="price">Price</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="description">      Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo
+      eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut
+      enimad minim veniam,quis nostrud exercitation ullamco laboris nisi ut
+      aliquip ex ea commodo consequat. Duis aute irure dolor in cillum
+      pariatur .
+    </string>
+
 </resources>

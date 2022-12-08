@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.HotelInformation">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:contentScrim="@color/gris2"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
+            app:toolbarId="@id/toolbar">
+
+            <ImageView
+                android:id="@+id/hotelimage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_4"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="$29"
+                android:textColor="@color/yellow"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view2" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="/night"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/textView37"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Royal President Hotel"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView22"
+                android:layout_width="28dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:srcCompat="@drawable/ic_launcher" />
+
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/urbanist_regular"
+                android:text="79 Place de la Madeleine , Paris , 78754 , France"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView22"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <View
+                android:id="@+id/view"
+                style="@style/Divider.Horizontal"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+
+            <View
+                android:id="@+id/view2"
+                style="@style/Divider.Horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView37" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Gallery Photos"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <ImageView
+                android:id="@+id/imageView23"
+                android:layout_width="123dp"
+                android:layout_height="73dp"
+                android:layout_marginTop="57dp"
+                android:src="@drawable/img_6"
+                app:layout_constraintStart_toEndOf="@+id/imageView25"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <ImageView
+                android:id="@+id/imageView24"
+                android:layout_width="114dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="57dp"
+                android:src="@drawable/img_7"
+                app:layout_constraintStart_toEndOf="@+id/imageView23"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <ImageView
+                android:id="@+id/imageView25"
+                android:layout_width="112dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/img_8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Description"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView25" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Facilites"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Location"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="390dp"
+                android:layout_height="82dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/urbanist_regular"
+                android:text="@string/description"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView18"
+                app:srcCompat="@drawable/swimming" />
+
+            <ImageView
+                android:id="@+id/imageView33"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23"
+                app:srcCompat="@drawable/meeting" />
+
+            <ImageView
+                android:id="@+id/imageView34"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView33"
+                app:layout_constraintTop_toBottomOf="@+id/textView22"
+                app:srcCompat="@drawable/spa" />
+
+            <ImageView
+                android:id="@+id/imageView35"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView34"
+                app:layout_constraintTop_toBottomOf="@+id/textView25"
+                app:srcCompat="@drawable/fitness" />
+
+            <ImageView
+                android:id="@+id/imageView36"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView35"
+                app:layout_constraintTop_toBottomOf="@+id/textView26"
+                app:srcCompat="@drawable/hour" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Swimming Pool"
+                android:textSize="8sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView21" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Meeting Room"
+                android:textSize="8sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView33" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Spa"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textView31"
+                app:layout_constraintTop_toBottomOf="@+id/imageView34" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Fitness Center"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textView32"
+                app:layout_constraintTop_toBottomOf="@+id/imageView35" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="24-Hours Open"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textView33"
+                app:layout_constraintTop_toBottomOf="@+id/imageView36" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Wi-Fi"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/imageView26" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Restaurant"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textView22"
+                app:layout_constraintTop_toBottomOf="@+id/imageView27" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:text="Parking"
+                android:textSize="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textView25"
+                app:layout_constraintTop_toBottomOf="@+id/imageView28" />
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView21"
+                app:layout_constraintTop_toBottomOf="@+id/textView18"
+                app:srcCompat="@drawable/wifi" />
+
+            <ImageView
+                android:id="@+id/imageView27"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView26"
+                app:layout_constraintTop_toBottomOf="@+id/textView18"
+                app:srcCompat="@drawable/resto" />
+
+            <ImageView
+                android:id="@+id/imageView28"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toEndOf="@+id/imageView27"
+                app:layout_constraintTop_toBottomOf="@+id/textView18"
+                app:srcCompat="@drawable/parking" />
+
+
+            <ImageView
+                android:id="@+id/imageView37"
+                android:layout_width="377dp"
+                android:layout_height="205dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView36"
+                app:srcCompat="@drawable/local" />
+
+            <ImageView
+                android:id="@+id/imageView39"
+                android:layout_width="190dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toEndOf="@+id/textView38"
+                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:srcCompat="@drawable/book" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

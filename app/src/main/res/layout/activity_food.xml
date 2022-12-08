@@ -64,7 +64,7 @@
         android:id="@+id/imageView6"
         android:layout_width="246dp"
         android:layout_height="259dp"
-        app:srcCompat="@drawable/img"
+        app:srcCompat="@drawable/plat"
         tools:layout_editor_absoluteX="82dp"
         tools:layout_editor_absoluteY="85dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

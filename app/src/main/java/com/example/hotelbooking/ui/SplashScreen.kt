@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.hotelbooking.R
+import kotlinx.android.synthetic.main.activity_hotel_information.*
 
 class SplashScreen : AppCompatActivity() {
         lateinit var handler: Handler
@@ -17,6 +18,5 @@ class SplashScreen : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }, 3000)
-
         }
 }

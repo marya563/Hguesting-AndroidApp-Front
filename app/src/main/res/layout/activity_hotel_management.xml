@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.HotelManagementActivity">
 
     <TextView
@@ -135,6 +136,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="136dp"
+        android:layout_height="130dp"
+        android:background="#E0E0E0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.194"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <Button
+        android:id="@+id/btnchoose"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:background="@drawable/round_btn_gris"
+        android:fontFamily="@font/urbanist_regular"
+        android:text="Hotel Image"
+        android:textColor="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.231" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
