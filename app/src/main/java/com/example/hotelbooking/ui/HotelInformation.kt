@@ -1,5 +1,6 @@
 package com.example.hotelbooking.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -15,26 +16,42 @@ class HotelInformation : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel_information)
         setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
 
         val nameText : TextView = findViewById(R.id.textView5)
+        val adressText : TextView = findViewById(R.id.textView21)
         val descriptionText : TextView = findViewById(R.id.textView24)
         val priceText : TextView = findViewById(R.id.textView37)
         val imageText : ImageView = findViewById(R.id.hotelimage)
+        val map : ImageView = findViewById(R.id.imageView37)
+
 
         val bundle : Bundle?= intent.extras
         val name = bundle!!.getString("name")
+        val adress = bundle.getString("adress")
         val description = bundle.getString("description")
         val price = bundle.getString("price")
         val image = bundle.getString("image")
-
+        supportActionBar!!.title=name
         nameText.text = name
         descriptionText.text = description
         priceText.text = price
+        adressText.text = adress
         Picasso.get()
             .load("${RetrofitInstance.BASE_URL}uploads/${image}")
             .fit()
             .centerCrop()
             .into(imageText)
+
+
+        map.setOnClickListener{
+            val intent = Intent(this, MapActivity::class.java)
+            intent.putExtra("name",name)
+            intent.putExtra("adress",adress)
+            startActivity(intent)
+
+        }
 
 
     }

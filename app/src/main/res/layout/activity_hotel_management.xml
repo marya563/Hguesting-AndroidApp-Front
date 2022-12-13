@@ -73,13 +73,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintTop_toBottomOf="@+id/adress" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="332dp"
         android:layout_height="48dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="33dp"
         android:background="@drawable/round_btn_gris3"
         android:ems="10"
         android:fontFamily="@font/urbanist_regular"
@@ -89,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/description"
@@ -108,34 +108,34 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
-        android:id="@+id/rooms"
+        android:id="@+id/adress"
         android:layout_width="332dp"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/round_btn_gris3"
         android:ems="10"
         android:fontFamily="@font/urbanist_regular"
-        android:hint="Hotel Rooms"
+        android:hint="Hotel Adress"
         android:inputType="textPersonName"
         android:paddingStart="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <Button
         android:id="@+id/btnadd"
         android:layout_width="329dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/round_btn_gris"
         android:fontFamily="@font/urbanist_regular"
         android:text="Add"
         android:textColor="@color/yellow"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -165,5 +165,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.231" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_bar"
+        app:itemTextColor="@drawable/bottomnavcolor"
+        app:itemIconTint="@drawable/bottomnavcolor"
+        android:background="@drawable/bottomnav"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

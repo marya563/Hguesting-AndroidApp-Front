@@ -8,19 +8,27 @@
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fitsSystemWindows="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hotelbooking"
-        android:fitsSystemWindows="true"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.HotelInformation"
-            android:theme="@style/Theme.Hotelbooking2"
+            android:name=".ui.MapActivity"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.HotelInformation"
+            android:exported="false"
+            android:parentActivityName=".ui.HomeActivity"
+            android:theme="@style/Theme.Hotelbooking2">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -108,7 +116,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAS-ccZ4b9rw3gp4gpFrgP2X60YwFkNwxE"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

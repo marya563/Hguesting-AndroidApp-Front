@@ -24,6 +24,7 @@ import com.example.hotelbooking.R
 import com.example.hotelbooking.api.RestApiService
 import com.example.hotelbooking.api.RetrofitInstance
 import com.example.hotelbooking.models.Hotel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_hotel_management.*
 import kotlinx.android.synthetic.main.itemhotel.*
 import okhttp3.MediaType
@@ -38,7 +39,7 @@ class HotelManagementActivity : AppCompatActivity() {
     private lateinit var name: EditText
     private lateinit var description: EditText
     private lateinit var price: EditText
-    private lateinit var rooms: EditText
+    private lateinit var adress: EditText
     private lateinit var image: EditText
     private lateinit var filepath : Uri
     private lateinit var path : String
@@ -60,14 +61,59 @@ class HotelManagementActivity : AppCompatActivity() {
             val name = findViewById<EditText>(R.id.name)
             val description = findViewById<EditText>(R.id.description)
             val price = findViewById<EditText>(R.id.price)
-            val rooms = findViewById<EditText>(R.id.rooms)
+            val adress = findViewById<EditText>(R.id.adress)
 
-            addHotel( name.text.toString(), description.text.toString(), price.text.toString().toInt() , rooms.text.toString().toInt() )
-            startActivity(
-                Intent(this, HomeActivity::class.java)
-            )
+            val namehotel = name.text.toString().trim()
+            val descriptionhotel = description.text.toString().trim()
+            val adresshotel = adress.text.toString().trim()
+            val pricehotel = price.text.toString().trim()
+
+            if (namehotel.isEmpty()){
+                name.error="Hotel Name required"
+                return@setOnClickListener
+            }else if (descriptionhotel.isEmpty()){
+                description.error="Description required"
+                return@setOnClickListener
+            }else if (adresshotel.isEmpty()){
+                adress.error="Adress required"
+                return@setOnClickListener
+            }else if (pricehotel.isEmpty()){
+                price.error="Price required"
+                return@setOnClickListener
+            }else{
+                Log.d("testttttttttttttt",namehotel)
+                addHotel( namehotel, descriptionhotel, adresshotel, pricehotel.toInt() )
+                startActivity(
+                    Intent(this, HomeActivity::class.java)
+                )
+            }
+
+
         }
+
+        var nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        nav.selectedItemId = R.id.explore
+
+        nav.setOnNavigationItemSelectedListener { item ->
+
+            when(item.itemId){
+                R.id.explore -> {
+                    startActivity(Intent(this, HotelManagementActivity::class.java))
+                    return@setOnNavigationItemSelectedListener true
+                }
+
+                R.id.home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    return@setOnNavigationItemSelectedListener true
+
+                }
+            }
+
+            false
         }
+
+
+    }
 
     private fun startFileChooser() {
         var i = Intent()
@@ -94,7 +140,7 @@ class HotelManagementActivity : AppCompatActivity() {
 
 
     @SuppressLint("Range")
-    private fun addHotel(name: String, description: String, price: Number, rooms: Number  ) {
+    private fun addHotel(name: String, description: String, adress: String , price: Number  ) {
 
         val fileName = contentResolver.query(filepath, null, null, null, null).use {
             if (it != null) {
@@ -115,8 +161,7 @@ class HotelManagementActivity : AppCompatActivity() {
         val id : String = ""
         val image = MultipartBody.Part.createFormData("image", fileName, requestFile)
 
-
-        Retrofit.addHotel(id,name,description,price,rooms,image).enqueue(object : Callback<Hotel> {
+        Retrofit.addHotel(id,name,description,adress,price,image).enqueue(object : Callback<Hotel> {
             override fun onResponse(call: Call<Hotel>, response: retrofit2.Response<Hotel>) {
                 Toast.makeText(this@HotelManagementActivity,"Successfully Added",Toast.LENGTH_SHORT).show()
 

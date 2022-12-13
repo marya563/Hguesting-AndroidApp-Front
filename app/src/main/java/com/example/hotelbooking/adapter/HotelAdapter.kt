@@ -24,8 +24,8 @@ class HotelAdapter(  private val hotels : List<Hotel> , private val listener: On
             .oval(false)
             .build()
         fun bindHotel(hotel : Hotel){
-            itemView.title.text = hotel.name.replace("\"", "")
-            itemView.country.text = hotel.description.replace("\"", "")
+            itemView.HotelName.text = hotel.name.replace("\"", "")
+            itemView.Adress.text = hotel.adress.replace("\"", "")
             itemView.price.text = hotel.price.toString()
             Picasso.get()
                 .load("${RetrofitInstance.BASE_URL}uploads/${hotel.image}")

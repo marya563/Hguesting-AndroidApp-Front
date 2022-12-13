@@ -16,15 +16,14 @@ import retrofit2.http.Part
 
 interface RestApiService {
 
-
     @Multipart
     @POST("addHotel")
     fun addHotel(
         @Part("id") id: String,
         @Part("name") name: String,
         @Part("description") description: String,
+        @Part("adress") adress: String,
         @Part("price") price: Number,
-        @Part("rooms") rooms: Number,
         @Part image: MultipartBody.Part
     ): Call<Hotel>
 
@@ -38,7 +37,7 @@ interface RestApiService {
 
 class RetrofitInstance {
     companion object {
-        const val BASE_URL: String = "http://192.168.1.2:3001/Hotel/"
+        const val BASE_URL: String = "http://172.16.10.82:3001/Hotel/"
 
         val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY

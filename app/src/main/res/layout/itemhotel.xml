@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/HotelName"
         android:layout_width="134dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -39,18 +39,18 @@
         app:layout_constraintVertical_bias="0.744" />
 
     <TextView
-        android:id="@+id/country"
+        android:id="@+id/Adress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/urbanist_light"
-        android:text="TextView"
+        android:text="Adress"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/HotelName"
         app:layout_constraintVertical_bias="0.16" />
 
     <TextView
@@ -58,13 +58,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/urbanist_regular"
-        android:text="TextView"
+        android:text="price"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country" />
+        app:layout_constraintTop_toBottomOf="@+id/Adress" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
