@@ -1,50 +1,33 @@
 package com.example.newapp
 
 
-import android.R.id
 import android.content.Intent
-import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 
 import com.example.newapp.API.RetrofitInstance
 import com.example.newapp.models.User
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 //import androidx.lifecycle.lifecycleScope
-import com.example.newapp.R
 //import com.example.newapp.databinding.ActivityProfilePicUploadBinding
-import com.google.android.material.button.MaterialButton
 import okhttp3.MultipartBody
 //import id.zelory.compressor.Compressor
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import java.io.File
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 //import id.zelory.compressor.constraint.format
 //import id.zelory.compressor.constraint.quality
 //import id.zelory.compressor.constraint.size
-import okhttp3.MediaType
 import okhttp3.RequestBody
-import java.text.DecimalFormat
-import kotlin.math.pow
 //import androidx.activity.viewModels
-import com.example.newapp.MainActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.Headers.Companion.toHeaders
 import retrofit2.Call
 import retrofit2.Callback
 import com.airbnb.lottie.LottieAnimationView
 import retrofit2.Response
-import java.lang.Thread.sleep
 
 
 class ProfilPicUpload : AppCompatActivity()  {

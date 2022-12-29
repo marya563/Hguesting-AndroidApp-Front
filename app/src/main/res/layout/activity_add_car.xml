@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCar">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="164dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginBottom="572dp"
+        android:fontFamily="@font/urbanistbold"
+        android:text="Better Ride Better Vacation "
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/checkout"
+        android:layout_width="118dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="412dp"
+        android:background="@drawable/customb2"
+        android:fontFamily="@font/urbanistbold"
+        android:shadowColor="@color/black"
+        android:text="Check-out"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        />
+
+    <Button
+        android:id="@+id/Paybt"
+        android:layout_width="276dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/urbanistbold"
+        android:shadowColor="@color/black"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="@color/yellow"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/checkin"
+        android:layout_width="114dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="256dp"
+        android:layout_marginBottom="412dp"
+        android:background="@drawable/customb2"
+        android:fontFamily="@font/urbanistbold"
+        android:shadowColor="@color/black"
+        android:text="Check-in"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        />
+
+    <TextView
+        android:id="@+id/dateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="300dp"
+        android:layout_marginBottom="375dp"
+        android:background="@color/dirtywhite"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/dateTv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="375dp"
+        android:background="@color/dirtywhite"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="244dp"
+        android:layout_marginBottom="375dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="375dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/days"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
+        android:layout_width="333dp"
+        android:layout_height="63dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="240dp"
+        android:background="@drawable/customtextfield"
+        android:hint="Number of Days"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:errorEnabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editdays"
+            android:layout_width="312dp"
+            android:layout_height="35dp"
+            android:background="@drawable/customtextfield"
+            android:inputType="textEmailAddress"
+            android:maxLength="10"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="434dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/priceEdit"
+    />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

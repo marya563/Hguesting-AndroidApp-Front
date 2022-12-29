@@ -7,14 +7,15 @@
     android:background="@color/white"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
-<include layout="@layout/toolbar"/>
+
+    <include layout="@layout/toolbar" />
 
     <ImageView
         android:id="@+id/imageView23"
         android:layout_width="32dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="388dp"
         android:layout_marginStart="24dp"
+        android:layout_marginBottom="388dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Firstname"
@@ -26,9 +27,9 @@
         android:id="@+id/imageView6"
         android:layout_width="32dp"
         android:layout_height="35dp"
+        android:layout_marginStart="24dp"
         android:layout_marginBottom="468dp"
         android:layout_weight="1"
-        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/lastname"
         app:layout_constraintHorizontal_bias="0.571"
@@ -102,44 +103,7 @@
 
             tools:layout_editor_absoluteX="86dp"
             tools:layout_editor_absoluteY="514dp" />
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/role"
-        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
-        android:layout_width="333dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="515dp"
-        android:background="@drawable/customtextfield"
-        android:hint="Role"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="10"
-
-
-        app:endIconMode="clear_text"
-        app:errorEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333">
-
-        <com.google.android.material.textfield.TextInputEditText
-
-            android:id="@+id/editrole"
-            android:layout_width="312dp"
-            android:layout_height="35dp"
-            android:background="@drawable/customtextfield"
-            android:maxLength="10"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-
-
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="167dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -294,6 +258,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="247dp"
@@ -336,17 +301,6 @@
 
 
     <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="528dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_supervised_user_circle_24" />
-
-    <ImageView
         android:id="@+id/imageView18"
         android:layout_width="28dp"
         android:layout_height="23dp"
@@ -355,6 +309,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/img_111" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

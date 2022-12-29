@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.content.SharedPreferences
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.newapp.API.RetrofitInstance
 import com.example.newapp.models.User
@@ -37,8 +35,8 @@ class RegisterActivity : AppCompatActivity() {
         lateinit var editpassword2: TextInputEditText
         lateinit var password2: TextInputLayout
 
-       lateinit var editrole: TextInputEditText
-       lateinit var role: TextInputLayout
+
+   //    lateinit var role: TextView
 
       // lateinit var toolbar : Toolbar
 
@@ -66,8 +64,7 @@ class RegisterActivity : AppCompatActivity() {
             editlastname = findViewById(R.id.editlastname)
             lastname = findViewById(R.id.lastname)
 
-            editrole = findViewById(R.id.editrole)
-            role = findViewById(R.id.role)
+
 
     /*toolbar.setNavigationOnClickListener{
     val intent = Intent(this, MainActivity::class.java)
@@ -75,36 +72,53 @@ class RegisterActivity : AppCompatActivity() {
 
     startActivity(intent)
         }*/
+
+
+
+
             val signup = findViewById<Button>(R.id.signup)
 
             signup.setOnClickListener {
                 doRegister()
             }
 
-        }
 
+        }
+    private fun addcar(){
+        val mainIntent = Intent(this, Carmain::class.java)
+        startActivity(mainIntent)
+
+
+    }
+
+    private fun carstest(){
+        val mainIntent = Intent(this, Carmain::class.java)
+        startActivity(mainIntent)
+
+
+    }
             private fun doRegister() {
                 if (validate()) {
                     val apiInterface = RetrofitInstance.api(this)
                     val user = User()
-                    user.lastName = editlastname.text.toString()
+                    user.lastname = editlastname.text.toString()
                     user.firstname = editfirstname.text.toString()
                     user.email = emailedit.text.toString()
                     user.password = textinputeditpassword.text.toString()
-                     user.role = editrole.text.toString()
+                  //   user.role = editrole.text.toString()
 
 
                     apiInterface.register(user).enqueue(object : Callback<ResponseBody> {
 
                         override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                            val stringResponse = response.body()?.string()
-                            val jresponse = JSONObject(stringResponse!!)
-                            val jresponse = JSONObject(Gson().toJson(response.body()))
-                            val userid = jresponse.getString("_id").toString()
+                         //   val stringResponse = response.body()?.string()
+                           // val jresponse = JSONObject(stringResponse!!)
+                          //  val jresponse = JSONObject(Gson().toJson(response.body()))
+                        //     val userid = jresponse.getString("_id").toString()
 
-                            mSharedPref.edit().apply{
-                                putString(ID, userid)
-                            }.apply()
+                        //    mSharedPref.edit().apply{
+                              //  putString(ID, userid)
+                       //     }.apply()
 
                             val status = response.code()
                             Log.w("Status Code", status.toString())
@@ -159,7 +173,7 @@ class RegisterActivity : AppCompatActivity() {
             Firstname.error = null
             lastname.error = null
             password2.error = null
-            role.error=null
+//            role.error=null
 
             if (emailedit.text!!.isNullOrEmpty()) {
                 emailedit.error = getString(R.string.emptyField)
@@ -183,10 +197,7 @@ class RegisterActivity : AppCompatActivity() {
                 editpassword2.error = getString(R.string.emptyField)
                 return false
             }
-            if ( editrole.text!!.isNullOrEmpty()) {
-                editrole.error = getString(R.string.emptyField)
-                return false
-            }
+
 
             /*if (txtPassword.text!!.equals(txtConfirmPassword.text!!) == false) {
                 txtLayoutConfirmPassword.error = getString(R.string.passwordsDontMatch)

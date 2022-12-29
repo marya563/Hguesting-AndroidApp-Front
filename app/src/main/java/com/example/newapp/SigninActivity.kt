@@ -1,10 +1,12 @@
 package com.example.newapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.util.Log
 import android.widget.Button
+import android.content.SharedPreferences
 import android.widget.CheckBox
 import android.widget.Toast
 import com.example.newapp.API.RetrofitInstance
@@ -31,18 +33,21 @@ class SigninActivity : AppCompatActivity(){
     lateinit var cbRememberMe: CheckBox
     lateinit var textinputeditpassword: TextInputEditText
     lateinit var password: TextInputLayout
-
+    lateinit var mSharedPref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_login)
             val actionBar = supportActionBar
         val signin = findViewById<Button>(R.id.signin)
 
+
         textinputedittext = findViewById(R.id.textinputedittext)
         Email = findViewById(R.id.Email )
         textinputeditpassword = findViewById(R.id. textinputeditpassword)
         password = findViewById(R.id.password)
         cbRememberMe = findViewById(R.id.cbRememberMe)
+
+        mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
 
 
@@ -52,9 +57,15 @@ class SigninActivity : AppCompatActivity(){
 
         }
     private fun navigate() {
-        val intentHome = Intent(this,MainActivity::class.java)
+        val intentHome = Intent(this,MainActivity4::class.java)
         startActivity(intentHome)
     }
+    private fun navigatetonode() {
+        val intentHome = Intent(this,backofficeHome::class.java)
+        startActivity(intentHome)
+    }
+
+
         private fun doLogin() {
             if (validate()) {
                 val apiInterface = RetrofitInstance.api(this)
@@ -64,28 +75,61 @@ class SigninActivity : AppCompatActivity(){
 
                 apiInterface.login(user).enqueue(object : Callback<User> {
 
+                    @SuppressLint("SuspiciousIndentation")
                     override fun onResponse(call: Call<User>, response: Response<User>) {
 
                         val status = response.code()
                         Log.w("Code", status.toString())
 
 
-                        if (status == 200) {
+                      /*  if (status == 200) {
                             val jsonObject = JSONObject(Gson().toJson(response.body()))
                             print(response.body())
-// user._id = jsonObject.getString("_id").toString()
-//   Log.w("userID", user._id!!.toString())
-/*     mSharedPref.edit().apply{
-         putString(ID, user._id!!.toString())
-     }.apply() */
+
+                       user._id = jsonObject.getString("_id").toString()
+                         Log.w("userID", user._id!!.toString())
+                                  mSharedPref.edit().apply{
+                         putString(ID, user._id!!.toString())
+                              }.apply()
                             val toast =
                                 Toast.makeText(
                                     applicationContext,
-                                    "Connected Successfully!",
-                                    Toast.LENGTH_SHORT
-                                )
-                            toast.show()
+                                    "Connected Successfully!", */
+                        if (status == 200) {
+
+                            val jsonObject = JSONObject(Gson().toJson(response.body()))
+                            user._id = jsonObject.getString("_id").toString()
+                            user.role = jsonObject.getString("role").toString()
+                            user.profilePic = jsonObject.getString("profilePic").toString()
+
+                            Log.w("user", user.toString())
+                            Log.w("user picccccc", user.profilePic.toString() )
+
+                            mSharedPref.edit().apply{
+                                putString(ID, user._id!!.toString())
+                            }.apply()
+                            if (cbRememberMe.isChecked){
+                                mSharedPref.edit().apply{
+                                    putBoolean(IS_REMEMBRED, true)
+                                    putString(EMAIL, user.email)
+                                    putString(PASSWORD, user.password)
+                                    putString("profilePic", user.profilePic)
+
+                                }.apply()
+
+                            }else{
+                                mSharedPref.edit().apply{
+                                    putString(ID, user._id!!.toString())
+                                }.apply()
+                            }
                             navigate()
+                            if(user.role == "Admin") {
+                                navigatetonode()
+
+                            }
+                            else {
+                                navigate()
+                            }
                         } else {
                             val toast =
                                 Toast.makeText(
@@ -126,4 +170,5 @@ class SigninActivity : AppCompatActivity(){
 
 
     }
+
         }

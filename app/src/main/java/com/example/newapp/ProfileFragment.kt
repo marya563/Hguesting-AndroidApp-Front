@@ -1,5 +1,6 @@
 package com.example.newapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,46 +14,51 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import  com.example.newapp.R
 import com.example.newapp.API.RetrofitInstance
 import com.example.newapp.models.User
-import com.example.newapp.API.RetrofitInstance.BASE_URL
-import com.example.newapp.ID
-//import com.esprit.takwira.ui.PREF_NAME
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ProfileFragment : Fragment() {
-    lateinit var profilename : TextView
     lateinit var email :  TextView
-    lateinit var phone :  TextView
-    lateinit var location :  TextView
-    lateinit var imageView: ImageView
-    lateinit var logtoutimg: ImageButton
-
-
+    lateinit var Name : TextView
+    lateinit var lastname : TextView
+    lateinit var mSharedPref: SharedPreferences
+    lateinit var logtoutimg : ImageButton
+    lateinit var imageView : ImageView
+    lateinit var edit: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_profile, container, false)
+        //val edit = ProfileFragment.findViewById<Button>(R.id.edit)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
+    }
 
-        profilename = rootView.findViewById(R.id.user_profile_name)
-        email = rootView.findViewById(R.id.profileEmail)
-        phone = rootView.findViewById(R.id.profilePhone)
-        location = rootView.findViewById(R.id.profileLocation)
-        imageView = rootView.findViewById(R.id.user_profile_photo)
-        logtoutimg = rootView.findViewById(R.id.logtoutimg)
+    override fun onViewCreated(view:View, savedInstanceState:Bundle?){
+        super.onViewCreated(view, savedInstanceState)
+        val layoutManager= LinearLayoutManager(context)
 
-       // mSharedPref = requireActivity().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE)
-      // val idUser: String = .getString(ID, null).toString()
+        Name = view.findViewById(R.id.profileName)
+        lastname= view.findViewById(R.id.plastname)
+        email = view.findViewById(R.id.profileEmail)
+        imageView = view.findViewById(R.id.user_profile_photo)
+        logtoutimg = view.findViewById(R.id.logtoutimg)
+        edit = view.findViewById(R.id.edit)
+
+
+        mSharedPref = requireActivity().getSharedPreferences(PREF_NAME, AppCompatActivity.MODE_PRIVATE)
+       val idUser: String = mSharedPref.getString(ID,null).toString()
 
         val apiInterface = RetrofitInstance.api(context)
-        apiInterface.getByIdUserrrr(ID).enqueue(object : Callback<User> {
+        println(idUser)
+        apiInterface.getByIdUserrrr(idUser).enqueue(object : Callback<User> {
 
             override fun onFailure(call: Call<User>, t: Throwable) {
                 Toast.makeText(context, "Connexion Problem", Toast.LENGTH_SHORT).show()
@@ -66,23 +72,34 @@ class ProfileFragment : Fragment() {
 
                 if (response.isSuccessful){
                     val user : User = response.body()!!
-                    Log.w("image url", user.firstname!!)
-                    profilename.text = user.firstname+" "+user.lastName
                     email.text = user.email
-                    val image = user.profilePic?.substringAfter("upload\\images\\")
+                   Name.text = user.firstname
+                   lastname.text = user.lastname
+                    val image = user.profilePic?.substringAfter("uploads\\")
                     Log.w("image url", user.profilePic!!)
-                    Glide.with(this@ProfileFragment).load("http://"+ BASE_URL+":3001/$image").into(imageView)
+                    Glide.with(this@ProfileFragment).load("$image").into(imageView)
                 }
             }
 
 
         })
 
+        fun updatee(){
+            val mainIntent = Intent(context, ProfileActivity::class.java)
+            startActivity(mainIntent)
 
+        }
         logtoutimg.setOnClickListener{
             requireActivity().finish()
         }
-        return rootView
+       edit.setOnClickListener{
+           updatee()
+        }
+
+
+
+
+//        return rootView
     }
 
 

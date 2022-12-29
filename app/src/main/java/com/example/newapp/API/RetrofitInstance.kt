@@ -8,8 +8,9 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitInstance {
 
-    var BASE_URL = "http://192.168.1.7--:3001/user/"
-    fun api( context: Context?) :UserApi {
+        var BASE_URL = "http://10.0.2.2:3001"
+    //var BASE_URL = "http://192.168.1.5:3001"
+    fun api(context: Context?) :UserApi {
 
         val retrofit = Retrofit
             .Builder()
@@ -22,6 +23,18 @@ object RetrofitInstance {
 
         return retrofit.create(UserApi::class.java)
     }
+  /*  fun api2( context: Context?) :CarsApi {
+        val retrofit2 = Retrofit
+            .Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .client(okhttpClient(context)) // Add our Okhttp client
+            .build()
+       //  .create(Api::class.java)
+
+
+        return retrofit2.create(CarsApi::class.java)
+    } $*/
 
     private fun okhttpClient(context: Context?): OkHttpClient {
         return OkHttpClient.Builder()
