@@ -10,91 +10,50 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.MainActivity">
 
-   <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
-        android:id="@+id/imageView"
-        android:layout_width="508dp"
-        android:layout_height="480dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:siShape="@drawable/selector" />
+ <LinearLayout
+     android:id="@+id/indicatorsContainer"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:gravity="center"
+     android:layout_marginBottom="12dp"
+     android:orientation="horizontal"
+     app:layout_constraintBottom_toTopOf="@id/BtnNext" />
+ 
+ <androidx.viewpager2.widget.ViewPager2
+     android:id="@+id/introSliderViewPager"
+     android:layout_width="match_parent"
+     android:layout_height="0dp"
+     android:overScrollMode="never"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintBottom_toTopOf="@id/indicatorsContainer"/>
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="158dp"
-        android:layout_height="321dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="272dp"
-        android:fontFamily="@font/urbanist_bold"
-        android:gravity="center"
-        android:text="Let's discover the world  with us"
-        android:textColor="#000000"
-        android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/BtnNext"
-        android:layout_width="341dp"
-        android:layout_height="48dp"
-        android:background="@drawable/round_btn_gris"
-        android:fontFamily="sans-serif"
-        android:text="Next"
-        android:textColor="@color/yellow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.899" />
+ <Button
+     android:id="@+id/BtnNext"
+     android:layout_width="341dp"
+     android:layout_height="48dp"
+     android:layout_marginTop="644dp"
+     android:background="@drawable/round_btn_gris"
+     android:fontFamily="sans-serif"
+     android:text="Next"
+     android:textColor="@color/yellow"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="341dp"
-        android:layout_height="48dp"
-        android:background="@drawable/round_btn_gris2"
-        android:text="Skip"
-        android:textColor="@color/gris"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.969" />
+ <Button
+     android:id="@+id/BtnSkip"
+     android:layout_width="341dp"
+     android:layout_height="48dp"
+     android:layout_marginBottom="16dp"
+     android:background="@drawable/round_btn_gris2"
+     android:text="Skip"
+     android:textColor="@color/gris"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/BtnNext"
+     app:layout_constraintVertical_bias="0.47" />
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824"
-        app:srcCompat="@drawable/selected" />
-
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824"
-        app:srcCompat="@drawable/unselected" />
-
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824"
-        app:srcCompat="@drawable/unselected" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.hotelbooking.ui
+package com.example.hotelbooking.ui.backend
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -17,17 +17,20 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hotelbooking.R
 import com.example.hotelbooking.api.RestApiService
 import com.example.hotelbooking.api.RetrofitInstance
 import com.example.hotelbooking.models.Hotel
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.hotelbooking.ui.HotelMainActivity
+import kotlinx.android.synthetic.main.activity_hotel_information.*
 import kotlinx.android.synthetic.main.activity_hotel_management.*
+import kotlinx.android.synthetic.main.activity_hotel_management.imageView
+import kotlinx.android.synthetic.main.activity_hotel_management.toolbar
+import kotlinx.android.synthetic.main.fragment_hotel.*
 import kotlinx.android.synthetic.main.itemhotel.*
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -46,9 +49,13 @@ class HotelManagementActivity : AppCompatActivity() {
     private lateinit var lastimg : String
     private lateinit var btnadd : Button
 
+    @SuppressLint("LongLogTag", "LogNotTimber")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel_management)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setTitle("Hotel Management")
 
         btnchoose.setOnClickListener{
             startFileChooser()
@@ -81,35 +88,19 @@ class HotelManagementActivity : AppCompatActivity() {
                 price.error="Price required"
                 return@setOnClickListener
             }else{
-                Log.d("testttttttttttttt",namehotel)
-                addHotel( namehotel, descriptionhotel, adresshotel, pricehotel.toInt() )
+                Log.d("test1",namehotel)
+                Log.d("test1",descriptionhotel)
+                Log.d("test1",adresshotel)
+                Log.d("test1",pricehotel)
+
+                addHotel( namehotel , descriptionhotel, adresshotel, pricehotel.toInt() )
                 startActivity(
-                    Intent(this, HomeActivity::class.java)
+                    Intent(this, HotelMainActivity::class.java)
                 )
             }
 
 
-        }
 
-        var nav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        nav.selectedItemId = R.id.explore
-
-        nav.setOnNavigationItemSelectedListener { item ->
-
-            when(item.itemId){
-                R.id.explore -> {
-                    startActivity(Intent(this, HotelManagementActivity::class.java))
-                    return@setOnNavigationItemSelectedListener true
-                }
-
-                R.id.home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    return@setOnNavigationItemSelectedListener true
-
-                }
-            }
-
-            false
         }
 
 
@@ -139,8 +130,8 @@ class HotelManagementActivity : AppCompatActivity() {
     }
 
 
-    @SuppressLint("Range")
-    private fun addHotel(name: String, description: String, adress: String , price: Number  ) {
+    @SuppressLint("Range", "LogNotTimber")
+    private fun addHotel(name: String, description: String, adress: String, price: Number  ) {
 
         val fileName = contentResolver.query(filepath, null, null, null, null).use {
             if (it != null) {
@@ -156,12 +147,15 @@ class HotelManagementActivity : AppCompatActivity() {
             it.toByteArray()
         }
         val type = contentResolver.getType(filepath)
-        val requestFile = RequestBody.create(MediaType.parse(type), bytes)
+        val requestFile = RequestBody.create(type?.toMediaTypeOrNull(), bytes)
         val Retrofit = RetrofitInstance.getRetrofitInstance().create(RestApiService::class.java)
-        val id : String = ""
-        val image = MultipartBody.Part.createFormData("image", fileName, requestFile)
+        val id : RequestBody = RequestBody.create("text/plain".toMediaTypeOrNull(), "")
+        val namehotel : RequestBody = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
+        val descriptionhotel : RequestBody = RequestBody.create("text/plain".toMediaTypeOrNull(), description)
+        val adresshotel : RequestBody = RequestBody.create("text/plain".toMediaTypeOrNull(), adress)
 
-        Retrofit.addHotel(id,name,description,adress,price,image).enqueue(object : Callback<Hotel> {
+        val image = MultipartBody.Part.createFormData("image", fileName, requestFile)
+        Retrofit.addHotel(id,namehotel,descriptionhotel,adresshotel,price,image).enqueue(object : Callback<Hotel> {
             override fun onResponse(call: Call<Hotel>, response: retrofit2.Response<Hotel>) {
                 Toast.makeText(this@HotelManagementActivity,"Successfully Added",Toast.LENGTH_SHORT).show()
 

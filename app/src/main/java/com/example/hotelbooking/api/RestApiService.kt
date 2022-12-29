@@ -1,6 +1,7 @@
 package com.example.hotelbooking.api
 
 import com.example.hotelbooking.models.Hotel
+import com.example.hotelbooking.models.ServiceRoom
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
@@ -16,20 +17,40 @@ import retrofit2.http.Part
 
 interface RestApiService {
 
+    // Hotel Crud //
+
     @Multipart
-    @POST("addHotel")
+    @POST("Hotel/addHotel")
     fun addHotel(
-        @Part("id") id: String,
-        @Part("name") name: String,
-        @Part("description") description: String,
-        @Part("adress") adress: String,
+        @Part("id") id: RequestBody ,
+        @Part("name") name: RequestBody ,
+        @Part("description") description: RequestBody ,
+        @Part("adress") adress: RequestBody ,
         @Part("price") price: Number,
         @Part image: MultipartBody.Part
     ): Call<Hotel>
 
 
-    @GET("getHotel")
+    @GET("Hotel/getHotel")
     fun getHotel(): Call<List<Hotel>>
+
+
+    // Service Room //
+
+    @Multipart
+    @POST("roomservice/addRoomService")
+    fun addRoomService(
+        @Part("id") id: RequestBody,
+        @Part("name") name: RequestBody,
+        @Part("type") type: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("price") price: Number,
+        @Part image: MultipartBody.Part
+    ): Call<ServiceRoom>
+
+    @GET("roomservice/getRoomService")
+    fun getRoomService(): Call<List<ServiceRoom>>
+
 
 
 }
@@ -37,7 +58,7 @@ interface RestApiService {
 
 class RetrofitInstance {
     companion object {
-        const val BASE_URL: String = "http://172.16.10.82:3001/Hotel/"
+        const val BASE_URL: String = "http://192.168.1.2:3001/"
 
         val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY

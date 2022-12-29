@@ -39,14 +39,15 @@ class HotelInformation : AppCompatActivity() {
         priceText.text = price
         adressText.text = adress
         Picasso.get()
-            .load("${RetrofitInstance.BASE_URL}uploads/${image}")
+            .load("${RetrofitInstance.BASE_URL}Hotel/uploads/${image}")
+            .placeholder(R.drawable.progress_animation)
             .fit()
             .centerCrop()
             .into(imageText)
 
 
         map.setOnClickListener{
-            val intent = Intent(this, MapActivity::class.java)
+            val intent = Intent(this, MapBoxActivity::class.java)
             intent.putExtra("name",name)
             intent.putExtra("adress",adress)
             startActivity(intent)

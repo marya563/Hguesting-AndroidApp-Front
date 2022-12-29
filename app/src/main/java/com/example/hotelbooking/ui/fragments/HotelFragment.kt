@@ -1,34 +1,32 @@
 package com.example.hotelbooking.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hotelbooking.R
+import com.example.hotelbooking.adapter.HotelAdapter
+import com.example.hotelbooking.api.RestApiService
+import com.example.hotelbooking.api.RetrofitInstance
+import com.example.hotelbooking.models.Hotel
+import com.example.hotelbooking.ui.HotelInformation
+import com.example.hotelbooking.ui.HotelMainActivity
+import com.example.hotelbooking.ui.backend.HotelManagementActivity
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_home.recyclerView1
+import kotlinx.android.synthetic.main.fragment_hotel.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class HotelFragment : Fragment(), HotelAdapter.OnItemClickListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HotelFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HotelFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    var hotells = ArrayList<Hotel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +36,49 @@ class HotelFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_hotel, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HotelFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HotelFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val Retrofit = RetrofitInstance.getRetrofitInstance().create(RestApiService::class.java)
+        Retrofit.getHotel().enqueue(object : Callback<List<Hotel>> {
+            override fun onResponse(call: Call<List<Hotel>>, response: Response<List<Hotel>>) {
+                showData(response.body()!!)
+                //  d("daniel","onResponse:${response.body()!![0]}")
             }
+
+            override fun onFailure(call: Call<List<Hotel>>, t: Throwable) {
+                //  d("daniel","onFailure")
+            }
+        })
+
+        imageView15.setOnClickListener {
+            val intent = Intent(requireContext(), HotelManagementActivity::class.java)
+            startActivity(intent)
+        }
+
     }
+
+
+    private fun showData(hotels : List<Hotel>){
+        recyclerView1.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = HotelAdapter(hotels,this@HotelFragment)
+            Log.d("test",hotels.toString())
+            hotells = hotels as ArrayList<Hotel>
+
+        }
+        recyclerView1.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+    }
+
+    override fun onItemClick(position: Int) {
+        val intent = Intent(context, HotelInformation::class.java)
+        Log.d("test",hotells.toString())
+        intent.putExtra("name",hotells[position].name)
+        intent.putExtra("adress",hotells[position].adress)
+        intent.putExtra("description",hotells[position].description)
+        intent.putExtra("price",hotells[position].price.toString())
+        intent.putExtra("image",hotells[position].image)
+        startActivity(intent)
+
+    }
+
 }

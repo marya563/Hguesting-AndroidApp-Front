@@ -24,11 +24,12 @@ class HotelAdapter(  private val hotels : List<Hotel> , private val listener: On
             .oval(false)
             .build()
         fun bindHotel(hotel : Hotel){
-            itemView.HotelName.text = hotel.name.replace("\"", "")
-            itemView.Adress.text = hotel.adress.replace("\"", "")
+            itemView.HotelName.text = hotel.name
+            itemView.Adress.text = hotel.adress
             itemView.price.text = hotel.price.toString()
             Picasso.get()
-                .load("${RetrofitInstance.BASE_URL}uploads/${hotel.image}")
+                .load("${RetrofitInstance.BASE_URL}Hotel/uploads/${hotel.image}")
+                .placeholder(R.drawable.progress_animation)
                 .fit()
                 .centerCrop()
                 .transform(transformation)

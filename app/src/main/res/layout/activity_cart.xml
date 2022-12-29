@@ -6,54 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".ui.CartActivity">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cart"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="41dp" />
-
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="44dp" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_swipe_left_24"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="103dp" />
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_swipe_left_24" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="84dp"
         android:fontFamily="sans-serif-medium"
         android:text="Swipe on on item to delete"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="103dp" />
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="371dp"
-        android:layout_height="457dp"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="139dp" />
+        android:id="@+id/cart_recycler_view"
+        android:layout_width="367dp"
+        android:layout_height="486dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="249dp"
-        android:layout_height="41dp"
+        android:layout_width="390dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/gris"
         android:text="Complete Order"
         android:textColor="@color/yellow"
-        android:background="@color/gris"
-        tools:layout_editor_absoluteX="86dp"
-        tools:layout_editor_absoluteY="667dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_bias="0.447" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="71dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/urbanist_black"
+        android:text="Total :"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_recycler_view" />
+
+    <TextView
+        android:id="@+id/cartActivityTotalPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/cart_recycler_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
